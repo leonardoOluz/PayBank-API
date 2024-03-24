@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
       Gerente.belongsTo(models.Usuario, {
         foreignKey: 'id_usuario',
       });
+      Gerente.hasMany(models.Banco, {
+        foreignKey: 'id_gerente',
+      });
     }
   }
   Gerente.init({
