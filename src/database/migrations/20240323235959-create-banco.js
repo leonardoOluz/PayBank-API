@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false,
       },
       cartao: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       id_usuario: {
         allowNull: false,
@@ -37,7 +37,7 @@ module.exports = {
         references: { model: 'Gerentes', key: 'id' },
       },
       agencia: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
       },
       createdAt: {
         allowNull: false,

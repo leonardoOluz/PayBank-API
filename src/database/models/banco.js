@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     cartao: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     agencia: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   }, {

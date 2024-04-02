@@ -32,6 +32,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      numero: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
       bairro: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -41,11 +45,11 @@ module.exports = {
         allowNull: false,
       },
       cep: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       cpf: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },

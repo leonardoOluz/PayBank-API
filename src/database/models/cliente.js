@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    gerente_id: DataTypes.INTEGER, // Associar com gerente
   }, {
     sequelize,
     modelName: 'Cliente',

@@ -23,7 +23,7 @@ class Controller {
     }
   }
 
-  async createData(res, req, next) {
+  async createData(req, res, next) {
     const dte = req.body;
     try {
       const result = await this.serviceEntity.postData(dte);
@@ -33,7 +33,7 @@ class Controller {
     }
   }
 
-  async updateData(res, req, next) {
+  async updateData(req, res, next) {
     const { id } = req.params;
     const { body } = req;
     try {
@@ -44,10 +44,10 @@ class Controller {
     }
   }
 
-  async deleteData(res, req, next) {
+  async deleteData(req, res, next) {
     const { id } = req.params;
     try {
-      const result = await this.serviceEntity.destroyData(Number(id));
+      const result = await this.serviceEntity.destroyData(id);
       return res.status(200).json(result);
     } catch (error) {
       return res.status(500).json({ message: error.message });

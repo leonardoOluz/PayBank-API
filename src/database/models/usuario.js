@@ -49,13 +49,20 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: true,
         contains: {
-          args: ['masc', 'fem'],
+          args: ['masculino', 'feminino'],
           msg: 'Por favor verifique o sexo indicado',
         },
       },
     },
     rua: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    numero: {
+      type: DataTypes.FLOAT,
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -76,18 +83,15 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     cep: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
     cpf: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
     },
     hash: {
       type: DataTypes.STRING,
