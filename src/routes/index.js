@@ -1,5 +1,8 @@
 /* eslint-disable no-shadow */
 const express = require('express');
+const usuario = require('./usuarioRouter');
+const gerente = require('./gerenteRouter');
+const cliente = require('./clienteRouter');
 
 const app = express();
 
@@ -9,5 +12,8 @@ module.exports = (app) => {
   app.use(
     express.json(),
     rotaTemporaria,
+    usuario,
+    gerente,
+    cliente,
   );
 };
