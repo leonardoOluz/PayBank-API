@@ -14,6 +14,10 @@ class Service {
     return dataSource[this.model].findAll({ where: dte });
   }
 
+  async getDataForScope(scope, where) {
+    return dataSource[this.model].scope(scope).findOne({ where: { ...where } });
+  }
+
   async postData(dte) {
     return dataSource[this.model].create(dte);
   }

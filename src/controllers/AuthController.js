@@ -15,7 +15,17 @@ class AuthController extends Controllers {
       const dados = await this.serviceEntity.createUser(body);
       return res.status(200).json(dados);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return res.status(500).json({ message: error });
+    }
+  }
+
+  async checkUserAndLogar(req, res, next) {
+    const { body } = req;
+    try {
+      const dadosTheUser = await this.serviceEntity.getUserLogin(body);
+      return res.status(201).json({ Message: dadosTheUser });
+    } catch (error) {
+      return res.status(500).json({ Message: error.message });
     }
   }
 }

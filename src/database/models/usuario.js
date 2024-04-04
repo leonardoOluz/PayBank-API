@@ -32,24 +32,32 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'Campo Nome obrigatório',
+        },
       },
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        isEmail: true,
+        notEmpty: {
+          msg: 'Campo Email obrigatório',
+        },
+        isEmail: {
+          msg: 'Campo digitado não é email válido',
+        },
       },
     },
     sexo: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        contains: {
-          args: ['masculino', 'feminino'],
+        notEmpty: {
+          msg: 'Campo Sexo obrigatório',
+        },
+        isIn: {
+          args: [['masculino', 'feminino']],
           msg: 'Por favor verifique o sexo indicado',
         },
       },
@@ -58,40 +66,61 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'Campo Rua obrigatório',
+        },
       },
     },
     numero: {
       type: DataTypes.FLOAT,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'Campo Numero de endereço obrigatório',
+        },
+        isFloat: {
+          msg: 'Campo numero do endereço tem que ser numerico',
+        },
       },
     },
     bairro: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'Campo Bairro Obrigatório',
+        },
       },
     },
     cidade: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'Campo Cidade obrigatório',
+        },
       },
     },
     cep: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: 'CAMPO Cep obrigatório',
+        },
       },
     },
     cpf: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {
+        msg: 'CPF Existente',
+      },
+      validate: {
+        notEmpty: {
+          msg: 'Campo CPF obrigatório',
+        },
+      },
     },
     hash: {
       type: DataTypes.STRING,
@@ -111,6 +140,18 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Usuario',
     tableName: 'Usuarios',
+    defaultScope: {
+      attributes: {
+        exclude: ['id', 'hash', 'sal', 'createdAt', 'updatedAt'],
+      },
+    },
+    scopes: {
+      loginScope: {
+        attributes: {
+          include: ['hash', 'sal'],
+        },
+      },
+    },
   });
   return Usuario;
 };
