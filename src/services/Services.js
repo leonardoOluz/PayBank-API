@@ -11,7 +11,7 @@ class Service {
   }
 
   async getDataForId(dte) {
-    return dataSource[this.model].findAll({ where: dte });
+    return dataSource[this.model].findOne({ where: dte });
   }
 
   async getDataForScope(scope, where) {

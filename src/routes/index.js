@@ -5,6 +5,7 @@ const gerente = require('./gerenteRouter');
 const cliente = require('./clienteRouter');
 const banco = require('./bancoRouter');
 const auth = require('./authRouter');
+const authentic = require('../middlewares/authentic');
 
 const app = express();
 
@@ -14,6 +15,7 @@ module.exports = (app) => {
   app.use(
     express.json(),
     auth,
+    authentic,
     rotaTemporaria,
     usuario,
     gerente,

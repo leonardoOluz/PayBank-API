@@ -26,10 +26,10 @@ module.exports = {
       cartao: {
         type: Sequelize.STRING,
       },
-      id_usuario: {
+      id_cliente: {
         allowNull: false,
         type: Sequelize.UUID,
-        references: { model: 'Usuarios', key: 'id' },
+        references: { model: 'Clientes', key: 'id' },
       },
       id_gerente: {
         allowNull: false,

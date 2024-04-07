@@ -16,9 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       Usuario.hasMany(models.Cliente, {
         foreignKey: 'id_usuario',
       });
-      Usuario.hasMany(models.Banco, {
-        foreignKey: 'id_usuario',
-      });
     }
   }
   Usuario.init({
@@ -142,7 +139,7 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'Usuarios',
     defaultScope: {
       attributes: {
-        exclude: ['id', 'hash', 'sal', 'createdAt', 'updatedAt'],
+        exclude: ['hash', 'sal', 'createdAt', 'updatedAt'],
       },
     },
     scopes: {

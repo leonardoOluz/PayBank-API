@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Gerente.init({
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     ativo: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -25,6 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Gerente',
     tableName: 'Gerentes',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    },
   });
   return Gerente;
 };

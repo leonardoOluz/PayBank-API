@@ -16,9 +16,18 @@ module.exports = (sequelize, DataTypes) => {
       Cliente.belongsTo(models.Gerente, {
         foreignKey: 'id_gerente',
       });
+      Cliente.hasMany(models.Banco, {
+        foreignKey: 'id_cliente',
+      });
     }
   }
   Cliente.init({
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     ativo: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -26,6 +35,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Cliente',
+    tableName: 'Clientes',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    },
   });
   return Cliente;
 };
