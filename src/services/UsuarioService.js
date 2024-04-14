@@ -13,7 +13,7 @@ class UsuarioService extends Service {
     return super.postData({
       nome: dte.nome,
       email: dte.email,
-      sexo: dte.sexo,
+      sexo: dte.sexo.toLowerCase(),
       rua: dte.rua,
       numero: Number(dte.numero),
       bairro: dte.bairro,

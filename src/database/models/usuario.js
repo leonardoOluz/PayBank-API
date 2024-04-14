@@ -10,10 +10,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Usuario extends Model {
     static associate(models) {
-      Usuario.hasMany(models.Gerente, {
+      Usuario.hasOne(models.Gerente, {
         foreignKey: 'id_usuario',
       });
-      Usuario.hasMany(models.Cliente, {
+      Usuario.hasOne(models.Cliente, {
         foreignKey: 'id_usuario',
       });
     }

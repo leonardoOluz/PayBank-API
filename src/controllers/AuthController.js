@@ -13,7 +13,7 @@ class AuthController extends Controllers {
     const { body } = req;
     try {
       const dados = await this.serviceEntity.createUser(body);
-      return res.status(200).json(dados);
+      return res.status(200).json({ message: 'Usuario criado com sucesso !' });
     } catch (error) {
       return res.status(500).json({ message: error });
     }
