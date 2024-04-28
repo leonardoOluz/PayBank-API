@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const Controller = require('./Controllers');
 const ClienteService = require('../services/ClienteService');
 
@@ -7,6 +8,16 @@ const cliente = new ClienteService();
 class ClienteController extends Controller {
   constructor() {
     super(cliente);
+  }
+
+  async getUserClienteForId(req, res, next) {
+    const { id } = req.params;
+    try {
+      const result = await this.serviceEntity.getUserCliente({ id });
+      return res.status(201).json(result);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
   }
 }
 
