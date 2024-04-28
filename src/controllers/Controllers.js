@@ -9,7 +9,7 @@ class Controller {
       const dados = await this.serviceEntity.gelAllData();
       return res.status(200).json(dados);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 
@@ -22,7 +22,7 @@ class Controller {
       }
       return res.status(400).json({ message: 'não foi possível localizador os dados' });
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 
@@ -32,7 +32,7 @@ class Controller {
       const result = await this.serviceEntity.postData(dte);
       return res.status(201).json(result);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 
@@ -46,7 +46,7 @@ class Controller {
       }
       return res.status(200).json({ message: 'verifique os dados passado' });
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 
@@ -59,7 +59,7 @@ class Controller {
       }
       return res.status(200).json({ message: 'id deletado com sucesso' });
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 }

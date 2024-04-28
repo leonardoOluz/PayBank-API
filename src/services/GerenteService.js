@@ -1,3 +1,4 @@
+const IncorrectRequest = require('../errors/IncorrectRequest');
 const Service = require('./Services');
 
 class GerenteService extends Service {
@@ -18,7 +19,7 @@ class GerenteService extends Service {
         Cidade: userExisting.cidade,
       };
     }
-    throw new Error('gerente inexistente');
+    throw new IncorrectRequest();
   }
 }
 

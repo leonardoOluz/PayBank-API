@@ -103,7 +103,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'CAMPO Cep obrigatório',
+          msg: 'Campo Cep obrigatório',
         },
       },
     },

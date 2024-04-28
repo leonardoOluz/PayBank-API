@@ -16,7 +16,7 @@ class GerenteController extends Controller {
       const result = await this.serviceEntity.getUserGerente({ id });
       return res.status(201).json(result);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return next(error);
     }
   }
 }
